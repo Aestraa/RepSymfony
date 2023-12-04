@@ -1,0 +1,37 @@
+{{ form_start(form) }}
+<table>
+    <tbody>
+        {# Ici vous créez une ligne de table pour chaque champ de formulaire #}
+        <tr>
+            <th>{{ form_label(form.title) }}</th>
+            <td>{{ form_widget(form.title) }}</td>
+        </tr>
+        {# Répétez pour chaque champ, sauf le slug et updatedAt #}
+        <tr>
+            <th>{{ form_label(form.content) }}</th>
+            <td>{{ form_widget(form.content) }}</td>
+        </tr>
+        <tr>
+            <th>{{ form_label(form.imageUrl) }}</th>
+            <td>{{ form_widget(form.imageUrl) }}</td>
+        </tr>
+        {# Pour les champs de date, spécifiez le format d'affichage #}
+        <tr>
+            <th>{{ form_label(form.createdAt) }}</th>
+            <td>{{ form_widget(form.createdAt, {'attr': {'data-date-format': 'DD/MM/YYYY'}}) }}</td>
+        </tr>
+        {# Ne pas inclure le champ slug et updatedAt ici #}
+        <tr>
+            <th>{{ form_label(form.author) }}</th>
+            <td>{{ form_widget(form.author) }}</td>
+        </tr>
+         <tr>
+            <th>{{ form_label(form.categories) }}</th>
+            <td>{{ form_widget(form.categories) }}</td>
+        </tr>
+        {# Ajoutez d'autres champs ici si nécessaire #}
+    </tbody>
+</table>
+
+<button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
