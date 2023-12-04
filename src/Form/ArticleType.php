@@ -21,7 +21,7 @@ class ArticleType extends AbstractType
             ->add('createdAt', DateTimeType::class, [
                 'format' => 'dd/MM/yyyy HH:mm:ss', // Format de la date
                 'input'  => 'datetime_immutable', // Type de champ
-                'html5' => false, 
+                'html5' => false,
             ])
             ->add('author') 
             ->add('categories')
