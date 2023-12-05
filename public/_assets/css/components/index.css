@@ -40,7 +40,6 @@ a{
     text-decoration: none;
 }
 
-/* Styles pour les boutons */
 .btn {
     padding: 0.375rem 0.75rem;
     border-radius: 0.25rem;
@@ -54,7 +53,6 @@ a{
     display: inline-block;
 }
 
-/* Couleurs et hover pour les boutons 'Afficher' et 'Modifier' */
 .btn-info {
     color: #fff;
     background-color: #17a2b8;
@@ -77,7 +75,6 @@ a{
     border-color: #d39e00;
 }
 
-/* Style pour le bouton 'Créer un nouvel article' */
 .btn-primary {
     color: #fff;
     background-color: #007bff;
@@ -89,7 +86,6 @@ a{
     border-color: #0062cc;
 }
 
-/* Alertes pour les messages Flash */
 .alert {
     padding: 0.75rem 1.25rem;
     margin-bottom: 1rem;
@@ -103,7 +99,6 @@ a{
     border-color: #c3e6cb;
 }
 
-/* Styles supplémentaires pour la table */
 .table {
     width: 100%;
     margin-bottom: 1rem;
@@ -118,7 +113,6 @@ a{
     border-top: 1px solid #dee2e6;
 }
 
-/* Bordures pour la table */
 .table-bordered {
     border: 1px solid #dee2e6;
 }
@@ -133,21 +127,18 @@ a{
     border-bottom-width: 2px;
 }
 
-/* En-tête sombre pour la table */
 .thead-dark th {
     color: #fff;
     background-color: #343a40;
     border-color: #454d55;
 }
 
-/* Style pour l'image dans la table */
 .table img {
     max-width: 100px;
     height: auto;
     border-radius: 0.25rem;
 }
 
-/* Styles pour la visibilité sur les fonds clairs et sombres */
 .text-light {
     color: #f8f9fa!important;
 }
@@ -155,3 +146,5 @@ a{
 .text-dark {
     color: #343a40!important;
 }
+
+

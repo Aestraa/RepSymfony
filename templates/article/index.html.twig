@@ -6,7 +6,11 @@
 
 <h1>Article index</h1>
 
-<a href="{{ path('app_article_new') }}" class="btn btn-primary">Créer un nouvel article</a>
+<a href="{{ path('app_article_new') }}" class="Btn">
+  
+  <div  class="sign">+</div>
+  <div class="text">Create</div>
+</a>
 
 {% for notice in app.flashes('notice') %}
     <div class="alert alert-success">
@@ -38,8 +42,16 @@
             <td>{{ article.updatedAt ? article.updatedAt|date('d/m/Y H:i:s') : '' }}</td>
             <td>{{ article.slug }}</td>
             <td>
-                <a href="{{ path('app_article_show', {'id': article.id}) }}" class="btn btn-info">Afficher</a>
-                <a href="{{ path('app_article_edit', {'id': article.id}) }}" class="btn btn-warning">Modifier</a>
+                <a href="{{ path('app_article_show', {'id': article.id}) }}" class="ui-btn">
+                  <span>
+                    Afficher
+                  </span>
+                </a>
+                <a href="{{ path('app_article_edit', {'id': article.id}) }}" class="ui-btn">
+                  <span>
+                    Modifier
+                  </span>
+                </a>
             </td>
         </tr>
     {% else %}
