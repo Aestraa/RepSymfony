@@ -1,5 +1,9 @@
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('_assets/css/index.css')}}">
+{% endblock %}
+
 {{ form_start(form) }}
-<table>
+<table class="table table-bordered">
     <tbody>
         <tr>
             {# TITRE #}
@@ -34,5 +38,10 @@
     </tbody>
 </table>
 
-<button class="btn">{{ button_label|default('Save') }}</button>
+<div class="button-container">
+<button class="ui-btn space-below">
+    <span>{{ button_label|default('Save') }}</span>
+</button>
+</div>
+
 {{ form_end(form) }}
