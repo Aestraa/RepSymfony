@@ -3,6 +3,7 @@ twig:
     globals:
         nomBlog: 'Blog MOINY'
         categoryRepository: '@App\Repository\CategoryRepository'
+        typeRepository: '@App\Repository\TypeRepository'
 
 when@test:
     twig:

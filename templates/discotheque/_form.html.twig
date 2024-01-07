@@ -1,0 +1,47 @@
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('_assets/css/index.css')}}">
+{% endblock %}
+
+{{ form_start(form) }}
+<table class="table table-bordered">
+    <tbody>
+        <tr>
+            {# TITRE #}
+            <th>{{ form_label(form.titre) }}</th>
+            <td>{{ form_widget(form.titre) }}</td>
+        </tr>
+        <tr>
+            {# DATE DE SORTIE #}
+            <th>{{ form_label(form.dateSortie) }}</th>
+            <td>{{ form_widget(form.dateSortie) }}</td> <!-- Retirez 'attr': {'data-date-format': 'DD/MM/YYYY'} si ce n'est pas nécessaire -->
+
+        </tr>
+        <tr>
+            {# GENRE #}
+            <th>{{ form_label(form.genre) }}</th>
+            <td>{{ form_widget(form.genre) }}</td>
+        </tr>
+        <tr>
+            {# LANGUE #}
+            <th>{{ form_label(form.langue) }}</th>
+            <td>{{ form_widget(form.langue) }}</td>
+        </tr>
+          <tr>
+            {# IMAGE #}
+            <th>{{ form_label(form.photoCouverture) }}</th>
+            <td>{{ form_widget(form.photoCouverture) }}</td>
+        </tr>
+        <tr>
+    <th>{{ form_label(form.artistes) }}</th>
+    <td>{{ form_widget(form.artistes) }}</td>
+</tr>
+    </tbody>
+</table>
+
+<div class="button-container">
+<button class="ui-btn space-below">
+    <span>{{ button_label|default('Save') }}</span>
+</button>
+</div>
+
+{{ form_end(form) }}

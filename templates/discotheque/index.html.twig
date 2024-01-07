@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Chanson index{% endblock %}
+
+{% block body %}
+
+<h1>Chanson index</h1>
+
+<a href="{{ path('app_chanson_new') }}" class="Btn">
+  
+  <div  class="sign">+</div>
+  <div class="text">Create</div>
+</a>
+
+{% for notice in app.flashes('notice') %}
+    <div class="alert alert-success">
+        {{ notice }}
+    </div>
+{% endfor %}
+
+<table class="table table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th>Titre</th>
+            <th>Date de sortie</th>
+            <th>Genre</th>
+            <th>Langue</th>
+            <th>Photo de couverture</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for chanson in chansons %}
+        <tr>
+            <td>{{ chanson.titre }}</td>
+            <td>{{ chanson.dateSortie ? chanson.dateSortie|date('d/m/Y') : '' }}</td>
+            <td>{{ chanson.genre }}</td>
+            <td>{{ chanson.langue }}</td>
+            <td><img src="{{ chanson.photoCouverture }}" alt="Image de la chanson" style="width:100px;height:auto;"></td>
+            <td>
+                <a href="{{ path('app_chanson_show', {'id': chanson.id}) }}" class="ui-btn">
+                  <span>
+                    Afficher
+                  </span>
+                </a>
+                <a href="{{ path('app_chanson_edit', {'id': chanson.id}) }}" class="ui-btn">
+                  <span>
+                    Modifier
+                  </span>
+                </a>
+            </td>
+        </tr>
+    {% else %}
+        <tr>
+            <td colspan="8">Aucune chanson trouvée</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

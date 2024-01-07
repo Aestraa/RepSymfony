@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}  
+    <div>
+        <a href="{{ path('app_discotheque') }}" class="btn-back-to-list">Retour à la liste des chansons</a>
+    </div>  
+    <h1>Artistes du type : {{ type.type|slice(0, 1)|upper }}{{ type.type|slice(1) }}</h1>
+    
+    <div class="artistes-container">
+        {% for artiste in artistes %}
+            <div class="artiste-card">
+                <a href="{{ path('app_artiste_details', {'id': artiste.id}) }}">
+                    <img src="{{ artiste.photo }}" alt="Photo de {{ artiste.nom }}" class="artiste-photo"/>
+                    <div class="artiste-info">
+                        <h2>{{ artiste.nom }} {{ artiste.prenom }}</h2>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

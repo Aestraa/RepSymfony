@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="back-button-container">
+        <a href="{{ path('app_artiste_by_type', {'id': artiste.etre.id}) }}" class="btn-back-to-list">Retour à la liste des artistes</a>
+    </div>
+
+    <div class="artiste-details-container">
+        <div class="artiste-image-container">
+            <img src="{{ artiste.photo }}" alt="Photo de {{ artiste.nom }}" class="artiste-photo"/>
+        </div>
+        <div class="artiste-info-container">
+            <h1 class="artiste-name">{{ artiste.nom }} {{ artiste.prenom }}</h1>
+            <p class="artiste-type">{{ artiste.etre.type|slice(0, 1)|upper }}{{ artiste.etre.type|slice(1) }}</p>
+            <p class="artiste-birthdate">Date de naissance: {{ artiste.dateNaissance|date('d/m/Y') }}</p>
+            <p class="artiste-birthplace">Lieu de naissance: {{ artiste.lieuNaissance }}</p>
+            <p class="artiste-description">{{ artiste.description }}</p>
+            <div class="artiste-chansons-container">
+            <h2>Chansons de {{ artiste.prenom }} {{ artiste.nom }}</h2>
+            <ul class="chansons-list">
+                {% for chanson in artiste.Participer %}
+                <a href="{{ path('app_chanson_show', {'id': chanson.id}) }}" class="chanson-link">
+                    <li class="chanson-item">
+                    
+                        <img src="{{ chanson.photoCouverture }}" alt="Couverture de {{ chanson.titre }}" class="chanson-image"/>
+                        <div class="chanson-details">
+                            <span class="chanson-titre">{{ chanson.titre }}</span>
+                            <span class="chanson-annee">({{ chanson.dateSortie|date('Y') }})</span>
+                        </div>                  
+                    </li>
+                    </a>
+                {% else %}
+                    <li>Aucune chanson enregistrée pour cet artiste.</li>
+                {% endfor %}
+            </ul>
+        </div>
+        </div>
+    </div>
+{% endblock %}

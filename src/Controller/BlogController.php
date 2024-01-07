@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Repository\CategoryRepository;
 use App\Repository\ArticleRepository;
+use App\Repository\TypeRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -28,24 +29,24 @@ class BlogController extends AbstractController
     #[Route('/blog/hello', name: 'app_home')]
     public function home(): Response
     {
-        return $this->render('blog/home.html.twig', [
-        ]);
+        return $this->render('blog/home.html.twig', []);
     }
 
     #[Route('/blog/articles', name: 'app_blog_articles')]
     public function showArticles(ArticleRepository $repoArticle, CategoryRepository $repoCategory): Response
     {
-    $articles = $repoArticle->findAll();
-    $categories = $repoCategory->findAll();
+        $articles = $repoArticle->findAll();
+        $categories = $repoCategory->findAll();
 
-    return $this->render('blog/index.html.twig', [
-        'articles' => $articles,
-        'categories' => $categories,
-    ]);
+        return $this->render('blog/index.html.twig', [
+            'articles' => $articles,
+            'categories' => $categories,
+        ]);
     }
 
     #[Route('/article/{slug}', name: 'app_single_article')]
-    public function single(CategoryRepository $repoCategory, ArticleRepository $repoArticle, string $slug):Response{
+    public function single(CategoryRepository $repoCategory, ArticleRepository $repoArticle, string $slug): Response
+    {
         $article = $repoArticle->findOneBySlug($slug);
         $categories = $repoCategory->findAll();
         return $this->render('blog/single.html.twig', ['article' => $article, 'categories' => $categories]);
@@ -58,7 +59,7 @@ class BlogController extends AbstractController
     }*/
 
     #[Route('/articles/category/{slug}', name: 'app_articles_by_category')]
-    public function articlesByCategory(string $slug , CategoryRepository $categoryRepository): Response
+    public function articlesByCategory(string $slug, CategoryRepository $categoryRepository): Response
     {
         $category = $categoryRepository->findOneBySlug($slug);
         $categories = $categoryRepository->findAll();
@@ -73,5 +74,18 @@ class BlogController extends AbstractController
             'categories' => $categories,
             'categoryName' => $category->getName(),
         ]);
+    }
+
+    #[Route('blog/type/{type}', name: 'app_artiste_by_type')]
+    public function typesByCategory(TypeRepository $typeRepository, string $type): Response
+    {
+        $artiste = [];
+        $type = $typeRepository->findOneByType($type);
+        $types = $typeRepository->findAll();
+        if ($type != null) {
+            $artiste = $type->getArtiste();
+        }
+
+        return $this->render('blog/articles_by_category.html.twig', ['artiste' => $artiste, 'types' => $types, 'type' => $type->getName(),]);
     }
 }

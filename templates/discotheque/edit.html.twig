@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Article{% endblock %}
+
+{% block body %}
+    <h1>Edit Article</h1>
+
+    {{ include('discotheque/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <div class="button-container">
+    <a href="{{ path('app_discotheque') }}" class="ui-btn space-below">
+    <span>Back To List</span>
+    </a>
+    </div>
+
+    {{ include('discotheque/_delete_form.html.twig') }}
+{% endblock %}

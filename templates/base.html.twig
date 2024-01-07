@@ -32,12 +32,27 @@
 						<a href="#">Categories</a>
 						<ul class="nav-bar">
 							{% for category in categoryRepository.findAll() %}
+							<a href="{{ path('app_articles_by_category', {'slug': category.slug}) }}">
 								<li class="nav-item">
-									<a href="{{ path('app_articles_by_category', {'slug': category.slug}) }}">{{ category.name }}</a>
+								{{ category.name }}
 									({{ category.articles|length }}
 									articles)
 								</li>
+							</a>
 							{% endfor %}
+						</ul>
+					</li>
+					<li class="nav-item down">
+						<a href="#">Type d'artistes</a>
+						<ul class="nav-bar">
+							{% for type in typeRepository.findAll() %}
+							<a href="{{ path('app_artiste_by_type', {'id': type.id}) }}"> 
+								<li class="nav-item">
+									{{ type.type }} ({{ type.artistes|length }}
+									artistes)
+								</li>
+							</a>
+						{% endfor %}
 						</ul>
 					</li>
 					<li class="nav-item">

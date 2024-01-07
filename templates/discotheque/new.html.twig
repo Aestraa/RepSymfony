@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Article{% endblock %}
+
+{% block body %}
+    <h1>Create new Article</h1>
+
+    {{ include('discotheque/_form.html.twig') }}
+
+   <div class="button-container">
+        <a href="{{ path('app_discotheque') }}" class="ui-btn space-below">
+        <span>Back To List</span>
+        </a>
+    </div>
+{% endblock %}
